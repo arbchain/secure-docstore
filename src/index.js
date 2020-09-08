@@ -17,7 +17,6 @@ const encryptFile = function (file,cipherKey) {
                 cipher.update(Buffer.from(file.toString())),
                 cipher.final()
             ]);
-            console.log("Encrypted data",encryptedData)
             resolve(encryptedData)
         })
     }catch (err) {
