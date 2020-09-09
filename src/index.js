@@ -125,5 +125,7 @@ module.exports = {
     generateCipherKey,
     encryptKey,
     decryptKey,
-    getPublicKey
+    getPublicKey,
+    crypto,
+    eccrypto
 }

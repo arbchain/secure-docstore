@@ -2,9 +2,13 @@ const assert = require('assert')
 const encrypt = require('../src/index.js')
 const fs = require('fs')
 
-let cipherKey, publicKey, encryptedKey, decryptedKey, encryptedData
+let cipherKey, publicKey, encryptedKey, decryptedKey, encryptedData, hashValue
 let privateKey = "d6d3710c0f16fafcfce5d4e1de712b875dd9e6eab4e05e0519ade677fe73a319"
-let filePath = "./test/file.txt"
+let filePath = "./test/static/testfile.txt"
+
+const computeHash = function (data) {
+    return encrypt.crypto.createHash('sha256').update(data).digest('hex');
+}
 
 it('should get public key', function () {
     publicKey = encrypt.getPublicKey(privateKey)
@@ -20,6 +24,7 @@ describe("Test for encrypting file and key",  () => {
 
     it('should encrypt file', async () => {
         const data = await fs.readFileSync(filePath)
+        hashValue = computeHash(data)
         encryptedData = await encrypt.encryptFile(data,cipherKey)
         assert(encryptedData!=null)
     })
@@ -39,8 +44,9 @@ describe("Test for decrypting file and key",  () => {
     });
 
     it('should decrypt file',  async () => {
-        const status = await encrypt.decryptFile(encryptedData,cipherKey)
-        assert(status!=null)
+        const data = await encrypt.decryptFile(encryptedData,cipherKey)
+        const hashValueDecrypted = computeHash(data)
+        assert(hashValueDecrypted==hashValue)
     });
 
 })
