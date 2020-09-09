@@ -1,0 +1,35 @@
+{
+  "name": "secure-docstore",
+  "version": "1.0.0",
+  "description": "A library to store and share documents securely with end to end encryption",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "eccrypto": "^1.1.5",
+    "mocha": "^8.1.1"
+  },
+  "files": [
+    "src/",
+    "test/"
+  ],
+  "keywords": [
+    "ecc",
+    "ecdsa",
+    "e2e",
+    "crypto",
+    "secp256k1",
+    "eccrypto"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbchain/secure-docstore.git"
+  },
+  "author": "Consenso Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arbchain/secure-docstore/issues"
+  },
+  "homepage": "https://github.com/arbchain/secure-docstore#readme"
+}
