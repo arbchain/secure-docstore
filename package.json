@@ -1,6 +1,6 @@
 {
   "name": "secure-docstore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to store and share documents securely with end to end encryption",
   "main": "src/index.js",
   "scripts": {

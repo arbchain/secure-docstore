@@ -3,7 +3,7 @@ const eccrypto = require("eccrypto");
 
 /**
  * Encrypts the file
- * @param file:  File data
+ * @param file:  {Buffer} file data
  * @param cipherKey: {Buffer} Symmetric Key
  * @returns {Promise<unknown>}
  */
@@ -14,7 +14,7 @@ const encryptFile = function (file,cipherKey) {
             const cipher = crypto.createCipheriv('aes256', cipherKey, iv);
             const encryptedData= Buffer.concat([
                 iv,
-                cipher.update(Buffer.from(file.toString())),
+                cipher.update(file),
                 cipher.final()
             ]);
             resolve(encryptedData)
